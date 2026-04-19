@@ -1,91 +1,150 @@
 # pm-skills
 
-> 产品经理把自己的工作全部外包给 AI 的尝试。
+面向产品经理的 AI 工作技能仓。它服务的是那些每天都在重复写 PRD、排优先级、做分析、补埋点、跑评审的人，解决的是“每次都像从头做一遍”的高频摩擦。
 
----
+用户进来后，应该先得到两件事：一是知道自己的问题属于哪一类 PM 工作，二是知道当前该调用哪个 Skill，能先产出什么。
 
-## 这是什么
+## 1. 这是什么
 
-13 个 Claude Code Skill，覆盖产品经理从"开个会"到"写复盘"的完整日常。
+这个仓库目前是一个 **skill-only PM 能力仓**：
 
-每一个 Skill 都在回答同一个问题：**这件事我每次都要重新想一遍，能不能让 AI 替我想？**
+- `13` 个核心 PM Skills
+- `2` 个原型方向的兼容别名目录：`space-image2proto`、`space-url2proto`
+- 目前还没有单独的 `commands/` 入口层
 
-答案是可以。
+它的定位不是“产品经理百科”，而是把 PM 的高频重复工作拆成一组可以直接调用的执行型技能：
 
----
+- 需求整理与评审
+- 优先级与路线图
+- 数据分析与实验设计
+- 埋点与调研
+- 竞品、复盘与原型转换
 
-## 创作来源
+如果你的目标是把模糊输入更快变成能评审、能讨论、能交付的结构化结果，这个仓库就是为这个目标准备的。
 
-产品经理的工作有个特点：**高度重复，但每次都感觉在从头开始**。
+## 2. 怎么用
 
-写 PRD 的结构每次都差不多，但每次都要重新想边界条件漏了哪些。排优先级的逻辑每次都是那几个框架，但每次都要花半天对齐认知。复盘报告的格式都固定了，但每次都要反复改行动项写得够不够具体。
+这类仓库的推荐用法不是先读文档，而是先按你当前的问题进入对应 Skill。
 
-这些摩擦加起来，就是每天下班晚两个小时的原因。
+### 2.1 先按问题类型找入口
 
-所以这 13 个 Skill 做的事情只有一件：**把摩擦消掉。**
+| 你现在要解决什么 | 建议 Skill | 会先得到什么 |
+|------|------------|----------------|
+| 一段模糊需求，需要写成正式文档 | `pm-prd-writer` | 一版可评审 PRD 草稿 |
+| 需求马上要过会，想先做预评审 | `pm-review-board` | 多角色问题清单和风险点 |
+| 一堆需求排不出先后 | `pm-prioritization-engine` | 一版优先级排序和取舍理由 |
+| 要做路线图、版本规划或阶段排期 | `pm-roadmap-planner` | 里程碑、依赖和节奏建议 |
+| 指标跌了、漏斗掉了、想找原因 | `pm-analytics` | 归因假设和决策建议 |
+| 要设计 A/B 实验 | `pm-experiment-designer` | 实验方案、指标和判定规则 |
+| 需求要补埋点 | `pm-tracking-spec-writer` | 事件表、字段表和校验清单 |
+| 要做用户调研或问卷 | `pm-survey-designer` | 结构化问卷或调研提纲 |
+| 要拆竞品 | `pm-competitor-deconstructor` | 四维竞品拆解和可借鉴点 |
+| 要写复盘 | `pm-postmortem-writer` | 结构化复盘报告和行动项 |
+| 有截图，想快速变原型 | `pm-image2proto` / `pm-image2pencil` | HTML 原型或 Pencil 设计稿 |
+| 有参考网址，想本地复刻 | `pm-url2proto` | 一版本地可跑的原型项目 |
 
----
+### 2.2 再按你手头已有的素材选入口
 
-## 13 个 Skill，一句话说清楚
+| 你手头有什么 | 建议先走什么 | 会先得到什么 |
+|------|------------|----------------|
+| 一段口头想法、会议纪要、聊天记录 | `pm-prd-writer` | 需求结构化草稿 |
+| 一份草稿需求文档 | `pm-review-board` | 漏项、风险和质疑点 |
+| 一批待选需求 | `pm-prioritization-engine` | 排序结果与版本建议 |
+| 一组业务数据或现象 | `pm-analytics` | 解释框架和下一步建议 |
+| 一张页面截图或一个网址 | `pm-image2proto` / `pm-url2proto` | 原型化结果 |
 
-| Skill | 干什么 |
-|-------|--------|
-| `pm-prd-writer` | 把一段模糊的描述变成可以过评审的 PRD |
-| `pm-review-board` | 模拟 6 个角色同时喷你的需求，提前发现问题 |
-| `pm-prioritization-engine` | RICE/ICE/Kano 三套模型同时打分，需求排序不再拍脑袋 |
-| `pm-roadmap-planner` | 输入目标和人力，输出带甘特图的路线图 |
-| `pm-analytics` | 数据跌了→找原因→给建议，一套走完 |
-| `pm-experiment-designer` | 实验假设、分流方案、样本量计算、止损规则一次搞定 |
-| `pm-tracking-spec-writer` | 把用户链路拆成埋点事件，附带 QA 校验 SQL |
-| `pm-survey-designer` | 从调研目标到问卷题目，每道题都对应一个假设 |
-| `pm-competitor-deconstructor` | 四维拆解竞品，说清楚哪些能抄、哪些不能抄 |
-| `pm-postmortem-writer` | 5-Why 归因 + 强制分级行动项，复盘报告写完能直接发 |
-| `pm-image2proto` | 截图进去，可运行的 HTML 原型出来 |
-| `pm-image2pencil` | 截图进去，Pencil 设计稿出来 |
-| `pm-url2proto` | 网址进去，Next.js 本地项目出来 |
+### 2.3 当前使用规范
 
----
+这个仓库已经适合直接用，但它还不是“命令仓”。
 
-## 怎么用
+当前最稳妥的使用方式是：
 
-把任意一个文件夹放进 Claude Code 的 skills 目录：
+1. 先判断问题属于哪类 PM 工作
+2. 直接调用对应 Skill
+3. 需要跨多个 Skill 串联时，再由使用者自己做人工编排
 
+如果你现在只想最快落地，优先从上表里选一个 Skill 直接开始。
+
+## 3. 工作说明
+
+### 3.1 能力域梳理
+
+| 能力域 | 对应 Skill | 解决什么问题 |
+|------|------------|--------------|
+| 需求设计 | `pm-prd-writer` | 把模糊问题变成可评审需求 |
+| 方案评审 | `pm-review-board` | 提前暴露跨角色疑问和风险 |
+| 决策排序 | `pm-prioritization-engine` | 给需求排序、做版本取舍 |
+| 节奏规划 | `pm-roadmap-planner` | 把目标拆成里程碑和节奏 |
+| 数据判断 | `pm-analytics` / `pm-experiment-designer` / `pm-tracking-spec-writer` | 做归因、实验和埋点设计 |
+| 用户洞察 | `pm-survey-designer` / `pm-competitor-deconstructor` | 做调研和竞品拆解 |
+| 复盘沉淀 | `pm-postmortem-writer` | 沉淀复盘与改进行动 |
+| 原型加速 | `pm-image2proto` / `pm-image2pencil` / `pm-url2proto` | 把参考物转成原型资产 |
+
+### 3.2 当前工作流命令状态
+
+按新版母仓库口径，这个仓库已经适合补命令层，但现在还没有正式 `commands/` 目录。
+
+当前的真实状态是：
+
+- 已有稳定 Skill 层
+- 已有清晰能力域
+- 缺的是“按素材状态进入”的命令入口层
+
+优先级最高的候选命令是：
+
+| 候选命令 | 适合场景 | 预计会先得到什么 |
+|------|----------|------------------|
+| `/start-from-feature-idea` | 只有功能想法或会议纪要 | PRD 草稿 + 评审建议 |
+| `/start-from-product-data` | 只有指标问题或数据异常 | 分析结论 + 实验 / 埋点建议 |
+| `/start-from-roadmap-question` | 只有优先级冲突或排期问题 | 排序建议 + 路线图草案 |
+| `/start-from-reference-ui` | 只有截图或参考网址 | 原型结果 + 后续产品化建议 |
+
+### 3.3 仓库边界
+
+这个仓库主要负责产品经理日常工作的结构化与提效，不负责：
+
+- 纯视觉设计系统
+- 纯工程实现
+- 复杂多插件路由中台
+
+如果未来要升级成“完整产品工作系统仓”，再补 `commands/`、`docs/workbooks/command-chain-map.md` 和插件分层会更合适。
+
+## 4. 仓库结构
+
+```text
+pm-skills/
+├── README.md
+├── CHANGELOG.md
+├── docs/
+│   └── workbooks/
+│       ├── domain-system-map.md
+│       └── workflow-command-scenarios.md
+├── pm-analytics/
+├── pm-competitor-deconstructor/
+├── pm-experiment-designer/
+├── pm-image2pencil/
+├── pm-image2proto/
+├── pm-postmortem-writer/
+├── pm-prd-writer/
+├── pm-prioritization-engine/
+├── pm-review-board/
+├── pm-roadmap-planner/
+├── pm-survey-designer/
+├── pm-tracking-spec-writer/
+├── pm-url2proto/
+├── space-image2proto/
+└── space-url2proto/
 ```
-~/.claude/skills/pm-prd-writer/
-```
 
-然后在 Claude Code 里说"写个需求文档"，它就知道该怎么做了。
+## Updates 更新
 
----
-
-## 一些真实反馈
-
-**pm-review-board 是最能救命的一个。**
-需求评审会上被喷，通常不是因为需求真的有大问题，而是因为某个角色的顾虑没被提前考虑到。这个 Skill 让你在评审会之前就把所有角色的问题过一遍，到了会上只需要确认，不需要现场救场。
-
-**pm-experiment-designer 解决了一个长期问题。**
-A/B 实验方案写出来容易，写对很难。样本量算没算够、止损规则定没定、判定标准是不是在实验开始前就定好了——这些细节之前全靠经验，现在有了检查清单。
-
-**pm-prd-writer 的价值在补漏，不在写。**
-PRD 的正文自己写其实不慢，慢的是反复被问"这个异常流程处理了吗""埋点需求呢""非功能需求没有"。这个 Skill 会在生成 PRD 之后自动补一遍，漏不了。
-
----
-
-## 仍然需要你自己做的事
-
-- 判断这个需求值不值得做
-- 在评审会上回答"为什么是现在"
-- 说服老板砍掉一个他最喜欢的功能
-- 下班
-
-AI 替代不了这些。但它可以让你在处理这些事情之前，不用在文档上浪费精力。
-
----
+- `2026-04-20`：按新版母仓库标准补齐 `docs/workbooks/domain-system-map.md`，明确这是一个 `skill-only PM 能力仓`，不是插件化系统仓
+- `2026-04-20`：按新版母仓库标准补齐 `docs/workbooks/workflow-command-scenarios.md`，明确当前命令层缺口与优先补建方向
+- `2026-04-20`：重写首页 README，把“服务谁、解决什么、先走哪个入口、会先得到什么”放到首页前部
+- `2026-04-20`：新增根级 `CHANGELOG.md`，把这轮结构回修正式记录下来
 
 ## 相关项目
 
-- [career.skill](https://github.com/zephyrwang6/career.skill) — 不是产品经理？输入你的职业，AI 帮你拆一套属于你的 Skill 库
+- [career.skill](https://github.com/zephyrwang6/career.skill)
 
----
-
-made with Claude Code，以及大量不想再手写 PRD 的下午
+made with Claude Code，以及很多不想再重复手写 PRD 和复盘的工作日
