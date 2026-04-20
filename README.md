@@ -1,150 +1,171 @@
-# pm-skills
+# PM Skills Sample Repo
 
-面向产品经理的 AI 工作技能仓。它服务的是那些每天都在重复写 PRD、排优先级、做分析、补埋点、跑评审的人，解决的是“每次都像从头做一遍”的高频摩擦。
+这是一个把 **产品经理常见工作流** 组织成轻量技能仓库的样板仓。
 
-用户进来后，应该先得到两件事：一是知道自己的问题属于哪一类 PM 工作，二是知道当前该调用哪个 Skill，能先产出什么。
+它解决的不是“缺几个 PM prompt”，而是更高频的几个问题：
+
+- 需求、调研、优先级、路线图、实验、原型这些动作很散，不知道怎么串成一条顺的链路
+- 想学 skills 仓库怎么搭，但又不想一上来上重型系统
+- 想复用一套样板去扩别的领域仓库，但不知道最小骨架应该长什么样
+
+进入这套样板仓后，应该先得到的不是一堆目录，而是：
+
+- 哪 13 个 PM skills 值得保留
+- 哪 5 条命令最适合调度这些 skills
+- 一套可复制到别的领域仓库里的轻量结构
 
 ## 1. 这是什么
 
-这个仓库目前是一个 **skill-only PM 能力仓**：
+这不是一个单纯的 PM prompt 集合，而是一个 **13 个 PM skills + 5 条 workflow commands + 1 个主 plugin** 的轻量样板仓库。
 
-- `13` 个核心 PM Skills
-- `2` 个原型方向的兼容别名目录：`space-image2proto`、`space-url2proto`
-- 目前还没有单独的 `commands/` 入口层
+它最适合三类使用目标：
 
-它的定位不是“产品经理百科”，而是把 PM 的高频重复工作拆成一组可以直接调用的执行型技能：
+- 快速安装一套 PM skills
+- 学习轻量技能仓库怎么组织
+- 后续继续复制出别的领域样板仓库
 
-- 需求整理与评审
-- 优先级与路线图
-- 数据分析与实验设计
-- 埋点与调研
-- 竞品、复盘与原型转换
+这个样板真正卖点不是“内容很大”，而是：
 
-如果你的目标是把模糊输入更快变成能评审、能讨论、能交付的结构化结果，这个仓库就是为这个目标准备的。
+- 结构够轻
+- 命令够清楚
+- 技能边界够稳定
+- 很适合复制成下一套仓库
 
-## 2. 怎么用
+## 2. 创作来源
 
-这类仓库的推荐用法不是先读文档，而是先按你当前的问题进入对应 Skill。
+这个样板仓库基于 `zephyrwang6/pm-skills` 当前这 13 个 `pm-*` skills 构建，并补齐了仓库级的 `plugin / command / catalog / docs` 结构。
 
-### 2.1 先按问题类型找入口
+## 3. 怎么用
 
-| 你现在要解决什么 | 建议 Skill | 会先得到什么 |
-|------|------------|----------------|
-| 一段模糊需求，需要写成正式文档 | `pm-prd-writer` | 一版可评审 PRD 草稿 |
-| 需求马上要过会，想先做预评审 | `pm-review-board` | 多角色问题清单和风险点 |
-| 一堆需求排不出先后 | `pm-prioritization-engine` | 一版优先级排序和取舍理由 |
-| 要做路线图、版本规划或阶段排期 | `pm-roadmap-planner` | 里程碑、依赖和节奏建议 |
-| 指标跌了、漏斗掉了、想找原因 | `pm-analytics` | 归因假设和决策建议 |
-| 要设计 A/B 实验 | `pm-experiment-designer` | 实验方案、指标和判定规则 |
-| 需求要补埋点 | `pm-tracking-spec-writer` | 事件表、字段表和校验清单 |
-| 要做用户调研或问卷 | `pm-survey-designer` | 结构化问卷或调研提纲 |
-| 要拆竞品 | `pm-competitor-deconstructor` | 四维竞品拆解和可借鉴点 |
-| 要写复盘 | `pm-postmortem-writer` | 结构化复盘报告和行动项 |
-| 有截图，想快速变原型 | `pm-image2proto` / `pm-image2pencil` | HTML 原型或 Pencil 设计稿 |
-| 有参考网址，想本地复刻 | `pm-url2proto` | 一版本地可跑的原型项目 |
+先按你现在手头的任务选命令，不要先逐个翻 skill。
 
-### 2.2 再按你手头已有的素材选入口
+### 3.1 按你现在的任务启动
 
-| 你手头有什么 | 建议先走什么 | 会先得到什么 |
-|------|------------|----------------|
-| 一段口头想法、会议纪要、聊天记录 | `pm-prd-writer` | 需求结构化草稿 |
-| 一份草稿需求文档 | `pm-review-board` | 漏项、风险和质疑点 |
-| 一批待选需求 | `pm-prioritization-engine` | 排序结果与版本建议 |
-| 一组业务数据或现象 | `pm-analytics` | 解释框架和下一步建议 |
-| 一张页面截图或一个网址 | `pm-image2proto` / `pm-url2proto` | 原型化结果 |
+| 你现在要做什么 | 建议命令 | 会先得到什么 |
+|----------------|----------|--------------|
+| 需求还没想清楚，要先跑调研、竞品和问题框架 | `/run-discovery` | 调研问题框架、竞品拆解方向和 PRD 起点 |
+| 已经知道要做一个需求，要补 PRD、评审和埋点 | `/write-prd-package` | 一版可评审 PRD、评审意见和埋点方案 |
+| 已经有一批需求，要先排优先级再出路线图 | `/prioritize-roadmap` | 优先级结果、路线图草稿和节奏建议 |
+| 已经有数据问题，要分析、设计实验、最后沉淀复盘 | `/analyze-experiment-loop` | 原因分析、实验方案和复盘闭环 |
+| 已经有截图或网址，要快速做原型 | `/prototype-from-reference` | 对应的 HTML / Pencil / Next.js 原型路径 |
 
-### 2.3 当前使用规范
+### 3.2 推荐用法
 
-这个仓库已经适合直接用，但它还不是“命令仓”。
+1. 先走命令，再看 skills。命令是入口，skill 是单点能力。
+2. 一组轻量仓库优先控制在 `10-15` 个核心 skills，再补 `3-5` 条 commands。
+3. command 只负责编排，不要把 skill 内容全文复制进去。
+4. 如果这是给别人学结构用的样板仓，README 要优先讲清“这是什么、怎么用、会先得到什么”。
+5. 这套 README 里的“怎么用”已经合并了最佳实践，不再单独拆一章重复说明。
 
-当前最稳妥的使用方式是：
+## 4. 工作说明
 
-1. 先判断问题属于哪类 PM 工作
-2. 直接调用对应 Skill
-3. 需要跨多个 Skill 串联时，再由使用者自己做人工编排
+### 4.1 Skills 说明
 
-如果你现在只想最快落地，优先从上表里选一个 Skill 直接开始。
+| Skill | 干什么 |
+|-------|--------|
+| `pm-prd-writer` | 把一段模糊的描述变成可以过评审的 PRD |
+| `pm-review-board` | 模拟 6 个角色同时 review 需求，提前发现问题 |
+| `pm-prioritization-engine` | 用 RICE / ICE / Kano 同时打分，需求排序不再拍脑袋 |
+| `pm-roadmap-planner` | 输入目标和人力，输出带节奏和依赖的路线图 |
+| `pm-analytics` | 数据跌了，先找原因，再给建议，再形成分析闭环 |
+| `pm-experiment-designer` | 实验假设、分流方案、样本量计算、止损规则一次设计清楚 |
+| `pm-tracking-spec-writer` | 把用户链路拆成埋点事件，补齐字段、口径和 QA 校验 |
+| `pm-survey-designer` | 从调研目标到问卷题目，让每道题都服务一个假设 |
+| `pm-competitor-deconstructor` | 从策略、功能、体验、增长四维拆竞品 |
+| `pm-postmortem-writer` | 做 5-Why 复盘和行动项沉淀，复盘报告可直接发团队 |
+| `pm-image2proto` | 根据截图快速生成可运行的 HTML 原型 |
+| `pm-image2pencil` | 根据截图生成 Pencil 设计稿并补结构说明 |
+| `pm-url2proto` | 根据网址快速生成本地 Next.js 原型工程 |
 
-## 3. 工作说明
+### 4.2 工作流命令说明
 
-### 3.1 能力域梳理
+| Command | 什么场景用 | 典型输入 | 会先得到什么 |
+|---------|------------|----------|--------------|
+| `/run-discovery` | 需求还没想清楚时，先把调研、竞品和问题框架跑一遍 | 模糊需求、用户问题、竞品名单 | 调研框架、竞品拆解和 PRD 起点 |
+| `/write-prd-package` | 把一个需求从 PRD 写作推进到评审和埋点方案 | 功能描述、需求背景、目标用户 | 一版可评审 PRD、评审意见和埋点方案 |
+| `/prioritize-roadmap` | 先排优先级，再转成路线图，适合版本规划场景 | 需求池、资源约束、目标 | 优先级结果和路线图草稿 |
+| `/analyze-experiment-loop` | 先分析数据，再设计实验，最后沉淀复盘 | 指标问题、数据结果、实验目标 | 原因分析、实验方案和复盘闭环 |
+| `/prototype-from-reference` | 根据截图或网址，选择最合适的原型落地路径 | 页面截图、网址、原型目标 | HTML / Pencil / Next.js 原型路径 |
 
-| 能力域 | 对应 Skill | 解决什么问题 |
-|------|------------|--------------|
-| 需求设计 | `pm-prd-writer` | 把模糊问题变成可评审需求 |
-| 方案评审 | `pm-review-board` | 提前暴露跨角色疑问和风险 |
-| 决策排序 | `pm-prioritization-engine` | 给需求排序、做版本取舍 |
-| 节奏规划 | `pm-roadmap-planner` | 把目标拆成里程碑和节奏 |
-| 数据判断 | `pm-analytics` / `pm-experiment-designer` / `pm-tracking-spec-writer` | 做归因、实验和埋点设计 |
-| 用户洞察 | `pm-survey-designer` / `pm-competitor-deconstructor` | 做调研和竞品拆解 |
-| 复盘沉淀 | `pm-postmortem-writer` | 沉淀复盘与改进行动 |
-| 原型加速 | `pm-image2proto` / `pm-image2pencil` / `pm-url2proto` | 把参考物转成原型资产 |
+命令链路，单独看更清楚：
 
-### 3.2 当前工作流命令状态
+- `/run-discovery`：`pm-survey-designer` → `pm-competitor-deconstructor` → `pm-prd-writer`
+- `/write-prd-package`：`pm-prd-writer` → `pm-review-board` → `pm-tracking-spec-writer`
+- `/prioritize-roadmap`：`pm-prioritization-engine` → `pm-roadmap-planner`
+- `/analyze-experiment-loop`：`pm-analytics` → `pm-experiment-designer` → `pm-postmortem-writer`
+- `/prototype-from-reference`：`pm-url2proto` 或 `pm-image2proto` 或 `pm-image2pencil`
 
-按新版母仓库口径，这个仓库已经适合补命令层，但现在还没有正式 `commands/` 目录。
-
-当前的真实状态是：
-
-- 已有稳定 Skill 层
-- 已有清晰能力域
-- 缺的是“按素材状态进入”的命令入口层
-
-优先级最高的候选命令是：
-
-| 候选命令 | 适合场景 | 预计会先得到什么 |
-|------|----------|------------------|
-| `/start-from-feature-idea` | 只有功能想法或会议纪要 | PRD 草稿 + 评审建议 |
-| `/start-from-product-data` | 只有指标问题或数据异常 | 分析结论 + 实验 / 埋点建议 |
-| `/start-from-roadmap-question` | 只有优先级冲突或排期问题 | 排序建议 + 路线图草案 |
-| `/start-from-reference-ui` | 只有截图或参考网址 | 原型结果 + 后续产品化建议 |
-
-### 3.3 仓库边界
-
-这个仓库主要负责产品经理日常工作的结构化与提效，不负责：
-
-- 纯视觉设计系统
-- 纯工程实现
-- 复杂多插件路由中台
-
-如果未来要升级成“完整产品工作系统仓”，再补 `commands/`、`docs/workbooks/command-chain-map.md` 和插件分层会更合适。
-
-## 4. 仓库结构
+## 5. 仓库结构
 
 ```text
-pm-skills/
-├── README.md
+pm-skills-sample/
+├── .claude-plugin/
+│   └── marketplace.json
+├── AGENTS.md
+├── CLAUDE.md
 ├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── README.md
+├── catalog/
+│   ├── commands-index.yaml
+│   └── skills-index.yaml
 ├── docs/
-│   └── workbooks/
-│       ├── domain-system-map.md
-│       └── workflow-command-scenarios.md
-├── pm-analytics/
-├── pm-competitor-deconstructor/
-├── pm-experiment-designer/
-├── pm-image2pencil/
-├── pm-image2proto/
-├── pm-postmortem-writer/
-├── pm-prd-writer/
-├── pm-prioritization-engine/
-├── pm-review-board/
-├── pm-roadmap-planner/
-├── pm-survey-designer/
-├── pm-tracking-spec-writer/
-├── pm-url2proto/
-├── space-image2proto/
-└── space-url2proto/
+│   ├── 01-sample-repo-architecture.md
+│   ├── 02-how-to-use-this-sample-repo.md
+│   ├── 03-source-origin.md
+│   └── 04-test-cases.md
+└── plugins/
+    └── pm-core/
+        ├── .claude-plugin/plugin.json
+        ├── README.md
+        ├── commands/
+        └── skills/
 ```
+
+- `.claude-plugin/`：仓库级 marketplace 元数据
+- `catalog/`：skills 与 commands 的索引层
+- `docs/`：样板说明、使用说明、来源说明与测试案例
+- `plugins/pm-core/`：PM 主 plugin，承载真实 skills 与 commands
+
+## 6. 三层架构
+
+- `skill`：解决单点任务
+- `command`：把多个 skill 串成一条工作流
+- `plugin`：把同一能力域打包成可分发单元
+
+你可以把它理解成一句话：
+
+- `skill` 解决单点问题
+- `command` 负责流程编排
+- `plugin` 负责整组分发
+
+## 7. 如何使用
+
+### 方式一：安装单个 skill
+
+```bash
+cp -r plugins/pm-core/skills/pm-prd-writer ~/.claude/skills/
+cp -r plugins/pm-core/skills/pm-analytics ~/.claude/skills/
+```
+
+### 方式二：安装整组 PM skills
+
+```bash
+cp -r plugins/pm-core/skills/* ~/.claude/skills/
+```
+
+### 方式三：按 command 学 workflow
+
+如果你不是只想安装，而是想学习“仓库怎么设计”，优先看：
+
+- `plugins/pm-core/commands/run-discovery.md`
+- `plugins/pm-core/commands/write-prd-package.md`
+- `plugins/pm-core/commands/prioritize-roadmap.md`
 
 ## Updates 更新
 
-- `2026-04-20`：按新版母仓库标准补齐 `docs/workbooks/domain-system-map.md`，明确这是一个 `skill-only PM 能力仓`，不是插件化系统仓
-- `2026-04-20`：按新版母仓库标准补齐 `docs/workbooks/workflow-command-scenarios.md`，明确当前命令层缺口与优先补建方向
-- `2026-04-20`：重写首页 README，把“服务谁、解决什么、先走哪个入口、会先得到什么”放到首页前部
-- `2026-04-20`：新增根级 `CHANGELOG.md`，把这轮结构回修正式记录下来
-
-## 相关项目
-
-- [career.skill](https://github.com/zephyrwang6/career.skill)
-
-made with Claude Code，以及很多不想再重复手写 PRD 和复盘的工作日
+- `2026-04-20`：README 按最新版母仓库标准重写，统一成“强需求 + 怎么用 + 去重后的工作说明”结构。
+- `2026-04-20`：命令说明统一改成“场景 + 典型输入 + 会先得到什么”的入口写法。
+- `2026-04-20`：工作流命令说明改成“表格 + 单独链路”结构，避免表格渲染时出现重复阅读。
+- `2026-04-20`：样板仓库切换为基于 `zephyrwang6/pm-skills` 的 13 个 `pm-*` skills 重建。
+- `2026-04-19`：仓库升级为 `marketplace + plugin + commands + catalog + docs` 的样板结构。
