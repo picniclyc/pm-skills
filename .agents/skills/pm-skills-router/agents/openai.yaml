@@ -1,0 +1,7 @@
+interface:
+  display_name: "PM Skills Router"
+  short_description: "从模糊产品经理任务判断该调用哪个 PM skill"
+  default_prompt: "Use $pm-skills-router to classify this PM task, choose the right skill chain, and return the first output."
+
+policy:
+  allow_implicit_invocation: true

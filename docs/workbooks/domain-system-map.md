@@ -4,6 +4,8 @@
 
 `pm-skills` 是一个面向产品经理高频工作场景的 `skill-only` 能力仓。
 
+它现在额外补了一个轻量 Codex hub skill：`pm-skills-router`。这个入口只负责判断“该先调用哪个 PM skill”，不把整个仓库改成重型系统仓。
+
 它当前解决的是：
 
 - 需求结构化
@@ -17,7 +19,7 @@
 它当前还不是：
 
 - 插件化多层系统仓
-- 以命令为主入口的工作流仓
+- 以 workflow spec 为主入口的工作流仓
 - 带完整项目目录标准的交付仓
 
 ## 2. 服务对象
@@ -55,6 +57,6 @@
 
 如果后续继续扩域，建议按下面顺序升级：
 
-1. 先补 `commands/` 入口层
-2. 再补 `command-chain-map.md`
+1. 先沉淀高频 workflow spec，不急着补空壳命令文件
+2. 再补 `workflow-spec-map.md`
 3. 最后再考虑 plugin 分层或按能力域拆仓

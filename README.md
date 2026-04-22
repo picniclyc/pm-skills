@@ -1,74 +1,62 @@
 # PM Skills Sample Repo
 
-这是一个把 **产品经理常见工作流** 组织成轻量技能仓库的样板仓。
+这是一个把 **产品经理高频工作** 组织成轻量 skills 集合的样板仓。
 
-它解决的不是“缺几个 PM prompt”，而是更高频的几个问题：
+它解决的不是“多几个 PM prompt”，而是三个更真实的问题：
 
-- 需求、调研、优先级、路线图、实验、原型这些动作很散，不知道怎么串成一条顺的链路
-- 想学 skills 仓库怎么搭，但又不想一上来上重型系统
-- 想复用一套样板去扩别的领域仓库，但不知道最小骨架应该长什么样
+- 需求、评审、优先级、路线图、数据、实验、原型这些动作很散，不知道先用哪个 skill
+- 未来要复制出其他领域 skills 仓，但不知道轻量仓库最小应该长什么样
+- 不想一开始就上重型系统仓，只想先把 `10-15` 个核心 skills 组织清楚
 
-进入这套样板仓后，应该先得到的不是一堆目录，而是：
+进入这个样板仓后，应该先得到的不是一堆目录，而是：
 
-- 哪 13 个 PM skills 值得保留
-- 哪 5 条命令最适合调度这些 skills
-- 一套可复制到别的领域仓库里的轻量结构
+- 哪 `13` 个 PM skills 是核心能力
+- 哪些场景可以直接调用单点 skill
+- 哪些场景适合沉淀为 workflow spec 或 route skill
+- 这套结构如何复制到下一个领域仓库
 
 ## 1. 这是什么
 
-这不是一个单纯的 PM prompt 集合，而是一个 **13 个 PM skills + 5 条 workflow commands + 1 个主 plugin** 的轻量样板仓库。
+这是一个 **13 个 PM skills + 1 个轻量 Codex hub skill + 候选 workflow spec 清单** 的样板仓。
 
-它最适合三类使用目标：
+它适合三类使用目标：
 
 - 快速安装一套 PM skills
-- 学习轻量技能仓库怎么组织
-- 后续继续复制出别的领域样板仓库
+- 学习轻量 skills 仓库怎么组织
+- 后续复制出增长、运营、设计、咨询等其他领域仓库
 
-这个样板真正卖点不是“内容很大”，而是：
+当前真实状态：
 
-- 结构够轻
-- 命令够清楚
-- 技能边界够稳定
-- 很适合复制成下一套仓库
+- `13` 个核心 PM skills
+- `2` 个原型方向兼容别名：`space-image2proto`、`space-url2proto`
+- `1` 个轻量 Codex hub skill：`pm-skills-router`
+- 暂未补正式 `commands/` workflow spec 目录
 
 ## 2. 创作来源
 
-这个样板仓库基于 `zephyrwang6/pm-skills` 当前这 13 个 `pm-*` skills 构建，并补齐了仓库级的 `plugin / command / catalog / docs` 结构。
+这个样板仓基于 `zephyrwang6/pm-skills` 当前的 `pm-*` skills 结构整理而来。
 
-## 3. 怎么用
+我保留了原仓里最有价值的部分：
 
-先按你现在手头的任务选命令，不要先逐个翻 skill。
+- PM 工作场景边界清楚
+- Skill 命名和触发条件相对稳定
+- 从需求、评审、优先级、路线图到数据、实验、原型的链路完整
 
-### 3.1 按你现在的任务启动
+同时按母仓新版标准补齐了轻量入口说明：不再把 `/xxx` 误写成 Codex 可自动触发命令，而是区分 `hub skill / atom skill / workflow spec`。
 
-| 你现在要做什么 | 建议命令 | 会先得到什么 |
-|----------------|----------|--------------|
-| 需求还没想清楚，要先跑调研、竞品和问题框架 | `/run-discovery` | 调研问题框架、竞品拆解方向和 PRD 起点 |
-| 已经知道要做一个需求，要补 PRD、评审和埋点 | `/write-prd-package` | 一版可评审 PRD、评审意见和埋点方案 |
-| 已经有一批需求，要先排优先级再出路线图 | `/prioritize-roadmap` | 优先级结果、路线图草稿和节奏建议 |
-| 已经有数据问题，要分析、设计实验、最后沉淀复盘 | `/analyze-experiment-loop` | 原因分析、实验方案和复盘闭环 |
-| 已经有截图或网址，要快速做原型 | `/prototype-from-reference` | 对应的 HTML / Pencil / Next.js 原型路径 |
+## 3. 工作说明
 
-### 3.2 推荐用法
-
-1. 先走命令，再看 skills。命令是入口，skill 是单点能力。
-2. 一组轻量仓库优先控制在 `10-15` 个核心 skills，再补 `3-5` 条 commands。
-3. command 只负责编排，不要把 skill 内容全文复制进去。
-4. 如果这是给别人学结构用的样板仓，README 要优先讲清“这是什么、怎么用、会先得到什么”。
-5. 这套 README 里的“怎么用”已经合并了最佳实践，不再单独拆一章重复说明。
-
-## 4. 工作说明
-
-### 4.1 Skills 说明
+### 3.1 Skills 说明
 
 | Skill | 干什么 |
 |-------|--------|
-| `pm-prd-writer` | 把一段模糊的描述变成可以过评审的 PRD |
+| `pm-skills-router` | Codex 总入口：当任务很模糊时，先判断该调用哪个 PM skill |
+| `pm-prd-writer` | 把一段模糊描述变成可以过评审的 PRD |
 | `pm-review-board` | 模拟 6 个角色同时 review 需求，提前发现问题 |
-| `pm-prioritization-engine` | 用 RICE / ICE / Kano 同时打分，需求排序不再拍脑袋 |
+| `pm-prioritization-engine` | 用 RICE / ICE / Kano 同时打分，减少拍脑袋排序 |
 | `pm-roadmap-planner` | 输入目标和人力，输出带节奏和依赖的路线图 |
-| `pm-analytics` | 数据跌了，先找原因，再给建议，再形成分析闭环 |
-| `pm-experiment-designer` | 实验假设、分流方案、样本量计算、止损规则一次设计清楚 |
+| `pm-analytics` | 指标异常时先做归因，再给可执行建议 |
+| `pm-experiment-designer` | 把实验假设、分流、样本量、止损规则一次设计清楚 |
 | `pm-tracking-spec-writer` | 把用户链路拆成埋点事件，补齐字段、口径和 QA 校验 |
 | `pm-survey-designer` | 从调研目标到问卷题目，让每道题都服务一个假设 |
 | `pm-competitor-deconstructor` | 从策略、功能、体验、增长四维拆竞品 |
@@ -77,95 +65,84 @@
 | `pm-image2pencil` | 根据截图生成 Pencil 设计稿并补结构说明 |
 | `pm-url2proto` | 根据网址快速生成本地 Next.js 原型工程 |
 
-### 4.2 工作流命令说明
+### 3.2 候选 Workflow Spec 说明
 
-| Command | 什么场景用 | 典型输入 | 会先得到什么 |
-|---------|------------|----------|--------------|
-| `/run-discovery` | 需求还没想清楚时，先把调研、竞品和问题框架跑一遍 | 模糊需求、用户问题、竞品名单 | 调研框架、竞品拆解和 PRD 起点 |
-| `/write-prd-package` | 把一个需求从 PRD 写作推进到评审和埋点方案 | 功能描述、需求背景、目标用户 | 一版可评审 PRD、评审意见和埋点方案 |
-| `/prioritize-roadmap` | 先排优先级，再转成路线图，适合版本规划场景 | 需求池、资源约束、目标 | 优先级结果和路线图草稿 |
-| `/analyze-experiment-loop` | 先分析数据，再设计实验，最后沉淀复盘 | 指标问题、数据结果、实验目标 | 原因分析、实验方案和复盘闭环 |
-| `/prototype-from-reference` | 根据截图或网址，选择最合适的原型落地路径 | 页面截图、网址、原型目标 | HTML / Pencil / Next.js 原型路径 |
+这些 `/xxx` 目前是候选 workflow spec，不是 Codex 菜单命令。只有当某条链路被反复高频使用、输入输出稳定时，才建议升级成 route skill。
 
-命令链路，单独看更清楚：
+| 候选 workflow spec | 什么场景用 | 链路 | 会先得到什么 |
+|--------------------|------------|------|--------------|
+| `/run-discovery` | 需求还没想清楚，需要先做调研、竞品和问题框架 | `pm-survey-designer` -> `pm-competitor-deconstructor` -> `pm-prd-writer` | 调研框架、竞品拆解和 PRD 起点 |
+| `/write-prd-package` | 已经知道要做一个需求，要补 PRD、评审和埋点 | `pm-prd-writer` -> `pm-review-board` -> `pm-tracking-spec-writer` | 一版可评审 PRD、评审意见和埋点方案 |
+| `/prioritize-roadmap` | 已经有一批需求，要先排优先级再出路线图 | `pm-prioritization-engine` -> `pm-roadmap-planner` | 优先级结果和路线图草稿 |
+| `/analyze-experiment-loop` | 已经有数据问题，要分析、设计实验、最后沉淀复盘 | `pm-analytics` -> `pm-experiment-designer` -> `pm-postmortem-writer` | 原因分析、实验方案和复盘闭环 |
+| `/prototype-from-reference` | 已经有截图或网址，要快速做原型 | `pm-url2proto` 或 `pm-image2proto` 或 `pm-image2pencil` | HTML / Pencil / Next.js 原型路径 |
 
-- `/run-discovery`：`pm-survey-designer` → `pm-competitor-deconstructor` → `pm-prd-writer`
-- `/write-prd-package`：`pm-prd-writer` → `pm-review-board` → `pm-tracking-spec-writer`
-- `/prioritize-roadmap`：`pm-prioritization-engine` → `pm-roadmap-planner`
-- `/analyze-experiment-loop`：`pm-analytics` → `pm-experiment-designer` → `pm-postmortem-writer`
-- `/prototype-from-reference`：`pm-url2proto` 或 `pm-image2proto` 或 `pm-image2pencil`
+## 4. 怎么用
+
+1. 如果你已经知道要做什么，直接调用对应 atom skill。
+2. 如果你只知道“这是一个 PM 问题”，但不知道先从哪下手，用 `pm-skills-router` 先判断。
+3. 如果同一条组合链反复出现，再把它写进 `docs/workbooks/workflow-spec-scenarios.md`，不要急着建空壳 `commands/`。
+4. 只有当 workflow spec 高频、稳定、值得出现在 Codex 菜单里时，再升级为 route skill。
+
+最推荐的启动方式：
+
+| 你现在手头有什么 | 建议入口 | 会先得到什么 |
+|------------------|----------|--------------|
+| 一段口头想法、会议纪要、聊天记录 | `pm-prd-writer` 或 `pm-skills-router` | 需求结构化草稿 |
+| 一份草稿需求文档 | `pm-review-board` | 漏项、风险和质疑点 |
+| 一批待选需求 | `pm-prioritization-engine` | 排序结果与版本建议 |
+| 一组业务数据或现象 | `pm-analytics` | 解释框架和下一步建议 |
+| 一张页面截图或一个网址 | `pm-image2proto` / `pm-url2proto` | 原型化结果 |
 
 ## 5. 仓库结构
 
 ```text
-pm-skills-sample/
-├── .claude-plugin/
-│   └── marketplace.json
-├── AGENTS.md
-├── CLAUDE.md
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── README.md
-├── catalog/
-│   ├── commands-index.yaml
-│   └── skills-index.yaml
+pm-skills/
+├── .agents/
+│   └── skills/
+│       └── pm-skills-router/
 ├── docs/
-│   ├── 01-sample-repo-architecture.md
-│   ├── 02-how-to-use-this-sample-repo.md
-│   ├── 03-source-origin.md
-│   └── 04-test-cases.md
-└── plugins/
-    └── pm-core/
-        ├── .claude-plugin/plugin.json
-        ├── README.md
-        ├── commands/
-        └── skills/
+│   └── workbooks/
+│       ├── domain-system-map.md
+│       └── workflow-spec-scenarios.md
+├── pm-analytics/
+├── pm-competitor-deconstructor/
+├── pm-experiment-designer/
+├── pm-image2pencil/
+├── pm-image2proto/
+├── pm-postmortem-writer/
+├── pm-prd-writer/
+├── pm-prioritization-engine/
+├── pm-review-board/
+├── pm-roadmap-planner/
+├── pm-survey-designer/
+├── pm-tracking-spec-writer/
+├── pm-url2proto/
+├── space-image2proto/
+└── space-url2proto/
 ```
 
-- `.claude-plugin/`：仓库级 marketplace 元数据
-- `catalog/`：skills 与 commands 的索引层
-- `docs/`：样板说明、使用说明、来源说明与测试案例
-- `plugins/pm-core/`：PM 主 plugin，承载真实 skills 与 commands
+## 6. 入口架构
 
-## 6. 三层架构
+- `hub skill`：`pm-skills-router`，负责模糊 PM 任务分流
+- `atom skill`：13 个 PM 单点能力，负责具体产出
+- `workflow spec`：记录高频组合链，暂不等于 Codex 菜单命令
+- `route skill`：未来只有高频稳定链路才升级
 
-- `skill`：解决单点任务
-- `command`：把多个 skill 串成一条工作流
-- `plugin`：把同一能力域打包成可分发单元
+一句话概括：
 
-你可以把它理解成一句话：
-
-- `skill` 解决单点问题
-- `command` 负责流程编排
-- `plugin` 负责整组分发
-
-## 7. 如何使用
-
-### 方式一：安装单个 skill
-
-```bash
-cp -r plugins/pm-core/skills/pm-prd-writer ~/.claude/skills/
-cp -r plugins/pm-core/skills/pm-analytics ~/.claude/skills/
-```
-
-### 方式二：安装整组 PM skills
-
-```bash
-cp -r plugins/pm-core/skills/* ~/.claude/skills/
-```
-
-### 方式三：按 command 学 workflow
-
-如果你不是只想安装，而是想学习“仓库怎么设计”，优先看：
-
-- `plugins/pm-core/commands/run-discovery.md`
-- `plugins/pm-core/commands/write-prd-package.md`
-- `plugins/pm-core/commands/prioritize-roadmap.md`
+`pm-skills-router` 负责先选路，`pm-*` skills 负责做事，workflow spec 负责沉淀组合经验。
 
 ## Updates 更新
 
-- `2026-04-20`：README 按最新版母仓库标准重写，统一成“强需求 + 怎么用 + 去重后的工作说明”结构。
-- `2026-04-20`：命令说明统一改成“场景 + 典型输入 + 会先得到什么”的入口写法。
-- `2026-04-20`：工作流命令说明改成“表格 + 单独链路”结构，避免表格渲染时出现重复阅读。
-- `2026-04-20`：样板仓库切换为基于 `zephyrwang6/pm-skills` 的 13 个 `pm-*` skills 重建。
-- `2026-04-19`：仓库升级为 `marketplace + plugin + commands + catalog + docs` 的样板结构。
+- `2026-04-20`：按新版母仓库标准补齐 `docs/workbooks/domain-system-map.md`，明确这是一个轻量 PM skills 样板仓。
+- `2026-04-20`：补齐 `docs/workbooks/workflow-spec-scenarios.md`，记录候选组合链和后续升级方向。
+- `2026-04-20`：重写首页 README，把“服务谁、解决什么、先走哪个入口、会先得到什么”放到首页前部。
+- `2026-04-20`：新增根级 `CHANGELOG.md`，把结构回修正式记录下来。
+- `2026-04-23`：按母仓新版 skill cluster 标准补充 `pm-skills-router` hub skill，并把候选 `/xxx` 口径改为候选 workflow spec。
+
+## 相关项目
+
+- [career.skill](https://github.com/zephyrwang6/career.skill)
+
+made with Claude Code，以及很多不想再重复手写 PRD 和复盘的工作日
